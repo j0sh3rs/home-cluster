@@ -55,6 +55,40 @@ nodes:
         mtu: 9000
         vip:
           ip: "192.168.35.2"
+  - hostname: "bee-jms-01"
+    ipAddress: "192.168.35.3"
+    installDisk: "/dev/nvme0n1"
+    talosImageURL: factory.talos.dev/installer/f19ad7b4a5d29151f3a59ef2d9c581cf89e77142e52f0abb5022e8f0b95ad0b9
+    controlPlane: true
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "b0:41:6f:08:36:c6"
+        dhcp: false
+        addresses:
+          - "192.168.35.3/24"
+        routes:
+          - network: 0.0.0.0/0
+            gateway: "192.168.35.1"
+        mtu: 9000
+        vip:
+          ip: "192.168.35.2"
+  - hostname: "bee-jms-03"
+    ipAddress: "192.168.35.10"
+    installDisk: "/dev/nvme0n1"
+    talosImageURL: factory.talos.dev/installer/f19ad7b4a5d29151f3a59ef2d9c581cf89e77142e52f0abb5022e8f0b95ad0b9
+    controlPlane: true
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "b0:41:6f:0c:78:28"
+        dhcp: false
+        addresses:
+          - "192.168.35.10/24"
+        routes:
+          - network: 0.0.0.0/0
+            gateway: "192.168.35.1"
+        mtu: 9000
+        vip:
+          ip: "192.168.35.2"
 
 # Global patches
 patches:
