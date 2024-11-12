@@ -27,13 +27,28 @@ nodes:
     ipAddress: "192.168.35.4"
     installDisk: "/dev/nvme1n1"
     talosImageURL: factory.talos.dev/installer/f19ad7b4a5d29151f3a59ef2d9c581cf89e77142e52f0abb5022e8f0b95ad0b9
-    controlPlane: true
+    controlPlane: false
     networkInterfaces:
       - deviceSelector:
           hardwareAddr: "f0:2f:74:cb:dd:b4"
         dhcp: false
         addresses:
           - "192.168.35.4/24"
+        routes:
+          - network: 0.0.0.0/0
+            gateway: "192.168.35.1"
+        mtu: 9000
+  - hostname: "bee-jms-02"
+    ipAddress: "192.168.35.6"
+    installDisk: "/dev/nvme0n1"
+    talosImageURL: factory.talos.dev/installer/f19ad7b4a5d29151f3a59ef2d9c581cf89e77142e52f0abb5022e8f0b95ad0b9
+    controlPlane: true
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "b0:41:6f:0c:6f:5b"
+        dhcp: false
+        addresses:
+          - "192.168.35.6/24"
         routes:
           - network: 0.0.0.0/0
             gateway: "192.168.35.1"
