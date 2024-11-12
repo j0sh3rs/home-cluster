@@ -1,0 +1,6 @@
+machine:
+  install:
+    extraKernelArgs:
+      - apparmor=0
+      - mitigations=off
+      - security=none

@@ -63,6 +63,7 @@ patches:
   - "@./patches/global/disable-search-domain.yaml"
   - "@./patches/global/dns.yaml"
   - "@./patches/global/hostdns.yaml"
+  - "@./patches/global/kernel.yaml"
   - "@./patches/global/kubelet.yaml"
   - "@./patches/global/ntp.yaml"
   - "@./patches/global/openebs-local.yaml"
