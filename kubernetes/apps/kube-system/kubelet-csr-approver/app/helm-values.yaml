@@ -1,0 +1,3 @@
+---
+providerRegex: ^(bigboi-jms-01)$
+bypassDnsResolution: true
