@@ -39,7 +39,7 @@ spec:
               UP_INFLUXDB_DISABLE: true
             envFrom:
               - secretRef:
-                  name: unpoller-secret
+                  name: unpoller-secrets
             probes:
               liveness:
                 enabled: true
