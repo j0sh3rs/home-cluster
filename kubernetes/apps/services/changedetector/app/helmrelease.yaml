@@ -100,10 +100,6 @@ spec:
         enabled: true
         type: hostPath
         hostPath: /etc/localtime
-      # timezone:
-      #   enabled: true
-      #   type: hostPath
-      #   hostPath: /etc/timezone
       datastore:
         enabled: true
         size: 20Gi
