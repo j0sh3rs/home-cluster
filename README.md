@@ -28,6 +28,7 @@ The features included will depend on the type of configuration you want to use. 
 ### System requirements
 
 > [!NOTE]
+>
 > 1. The included behaviour of Talos is that all nodes are able to run workloads, **including** the controller nodes. **Worker nodes** are therefore **optional**.
 > 2. Do you have 3 or more nodes? It is highly recommended to make 3 of them controller nodes for a highly available control plane.
 > 3. Running the cluster on Proxmox VE? My thoughts and recommendations about that are documented [here](https://onedr0p.github.io/home-ops/notes/proxmox-considerations.html).
@@ -36,7 +37,7 @@ The features included will depend on the type of configuration you want to use. 
 |---------|----------|---------------|---------------------------|
 | Control | 4 _(6*)_ | 8GB _(24GB*)_ | 120GB _(500GB*)_ SSD/NVMe |
 | Worker  | 4 _(6*)_ | 8GB _(24GB*)_ | 120GB _(500GB*)_ SSD/NVMe |
-| _\* recommended_ |
+| _\* recommended_   ||||
 
 1. Head over to <https://factory.talos.dev> and follow the instructions which will eventually lead you to download a Talos Linux iso file (or for SBCs the `.raw.xz`). Make sure to note the schematic ID you will need this later on.
 
@@ -57,6 +58,7 @@ Once you have installed Talos on your nodes, there are six stages to getting a F
 
 2. Clone **your new repo** to you local workstation and `cd` into it.
 
+<!-- markdownlint-disable MD051 MD029 -->
 3. Continue on to 🌱 [**Stage 2**](#-stage-2-setup-your-local-workstation-environment)
 
 ### 🌱 Stage 2: Setup your local workstation
@@ -158,6 +160,7 @@ You have two different options for setting up your local workstation.
     task bootstrap:talos
     ```
 
+<!-- markdownlint-disable MD033 MD051-->
 2. ⚠️ It might take a while for the cluster to be setup (10+ minutes is normal), during which time you will see a variety of error messages like: "couldn't get current server API group list," "error: no matching resources found", etc. This is a normal. If this step gets interrupted, e.g. by pressing <kbd>Ctrl</kbd> + <kbd>C</kbd>, you likely will need to [nuke the cluster](#-Nuke) before trying again.
 
 #### Cluster validation
@@ -229,21 +232,24 @@ _Mic check, 1, 2_ - In a few moments applications should be lighting up like Chr
 
 ## 📣 Flux w/ Cloudflare post installation
 
-#### 🌐 Public DNS
+### 🌐 Public DNS
 
 The `external-dns` application created in the `networking` namespace will handle creating public DNS records. By default, `echo-server` and the `flux-webhook` are the only subdomains reachable from the public internet. In order to make additional applications public you must set set the correct ingress class name and ingress annotations like in the HelmRelease for `echo-server`.
 
-#### 🏠 Home DNS
+### 🏠 Home DNS
 
 `k8s_gateway` will provide DNS resolution to external Kubernetes resources (i.e. points of entry to the cluster) from any device that uses your home DNS server. For this to work, your home DNS server must be configured to forward DNS queries for `${bootstrap_cloudflare.domain}` to `${bootstrap_cloudflare.gateway_vip}` instead of the upstream DNS server(s) it normally uses. This is a form of **split DNS** (aka split-horizon DNS / conditional forwarding).
 
 > [!TIP]
 > Below is how to configure a Pi-hole for split DNS. Other platforms should be similar.
+>
 > 1. Apply this file on the Pihole server while substituting the variables
+>
 > ```sh
 > # /etc/dnsmasq.d/99-k8s-gateway-forward.conf
 > server=/${bootstrap_cloudflare.domain}/${bootstrap_cloudflare.gateway_vip}
 > ```
+>
 > 2. Restart dnsmasq on the server.
 > 3. Query an internal-only subdomain from your workstation (any `internal` class ingresses): `dig @${home-dns-server-ip} echo-server-internal.${bootstrap_cloudflare.domain}`. It should resolve to `${bootstrap_cloudflare.ingress_vip}`.
 
@@ -290,7 +296,7 @@ task talos:reset # --force
 
 ## 🛠️ Talos and Kubernetes Maintenance
 
-#### ⚙️ Updating Talos node configuration
+### ⚙️ Updating Talos node configuration
 
 📍 _Ensure you have updated `talconfig.yaml` and any patches with your updated configuration._
 
@@ -405,6 +411,7 @@ If this repo is too hot to handle or too cold to hold check out these following 
 
 ## ⭐ Stargazers
 
+<!-- markdownlint-disable MD033 -->
 <div align="center">
 
 [![Star History Chart](https://api.star-history.com/svg?repos=onedr0p/cluster-template&type=Date)](https://star-history.com/#onedr0p/cluster-template&Date)
