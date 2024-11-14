@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/managed-by: kustomize
     app.kubernetes.io/created-by: dragonfly-operator
   name: dragonflydb
-  namespace: infra
+  namespace: databases
 spec:
   image: docker.dragonflydb.io/dragonflydb/dragonfly:v1.25.1
   replicas: 1
@@ -36,7 +36,7 @@ metadata:
     app.kubernetes.io/managed-by: kustomize
     app.kubernetes.io/name: dragonfly-memcached
   name: dragonflydb-memcached
-  namespace: infra
+  namespace: databases
 spec:
   ports:
   - name: memcached
