@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./changedetector/ks.yaml
+  - ./atuin/ks.yaml
