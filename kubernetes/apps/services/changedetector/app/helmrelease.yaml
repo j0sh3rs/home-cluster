@@ -85,9 +85,9 @@ spec:
             port: 5000
     ingress:
       app:
-        annotations:
-          external-dns.alpha.kubernetes.io/target: external.bth.wtf
-        className: external
+        # annotations:
+        #   external-dns.alpha.kubernetes.io/target: external.bth.wtf
+        className: internal
         hosts:
           - host: &host cd.bth.wtf
             paths:
