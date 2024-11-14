@@ -5,7 +5,7 @@ metadata:
   name: &app dragonflydb
   namespace: flux-system
 spec:
-  targetNamespace: network
+  targetNamespace: databases
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
