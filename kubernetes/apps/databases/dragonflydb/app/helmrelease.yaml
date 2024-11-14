@@ -37,6 +37,11 @@ spec:
       - --logtostderr
       - --memcached_port=11211
       - --default_lua_flags=allow-undeclared-keys
+    tls:
+      enabled: true
+      createCerts: true
+      issuer:
+        name: letsencrypt-production
     podSecurityContext:
       fsGroup: 2000
     securityContext:
