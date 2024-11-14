@@ -81,7 +81,7 @@ spec:
             scrapeTimeout: 10s
     ingress:
       app:
-        className: nginx
+        className: internal
         annotations:
           nginx.ingress.kubernetes.io/proxy-body-size: 20m
         hosts:
