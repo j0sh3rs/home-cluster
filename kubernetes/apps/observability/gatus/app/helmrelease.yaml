@@ -111,8 +111,8 @@ spec:
     ingress:
       app:
         annotations:
-          external-dns.alpha.kubernetes.io/target: external.bth.wtf
-        className: external
+          external-dns.alpha.kubernetes.io/target: internal.bth.wtf
+        className: internal
         hosts:
           - host: status.bth.wtf
             paths:
