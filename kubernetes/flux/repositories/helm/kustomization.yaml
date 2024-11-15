@@ -11,6 +11,7 @@ resources:
   - ./dragonflydb.yaml
   - ./grafana.yaml
   - ./jetstack.yaml
+  - ./kyverno.yaml
   - ./metrics-server.yaml
   - ./openebs.yaml
   - ./postfinance.yaml
