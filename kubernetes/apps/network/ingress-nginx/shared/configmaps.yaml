@@ -1,0 +1,48 @@
+apiVersion: v1
+data:
+  X-Frame-Options: 'SAMEORIGIN'
+  X-XSS-Protection: '1; mode=block'
+  X-Content-Type-Options: 'nosniff'
+  Permissions-Policy: 'accelerometer=(),autoplay=(),camera=(),clipboard-read=(),clipboard-write=(),fullscreen=(),geolocation=(),gyroscope=(),hid=(),interest-cohort=(),magnetometer=(),microphone=(),payment=(),publickey-credentials-get=(),screen-wake-lock=(),serial=(),sync-xhr=(),usb=()'
+  Feature-Policy: "accelerometer 'none';ambient-light-sensor'none';autoplay'none';camera'none';encrypted-media'none';fullscreen'none';geolocation'none';gyroscope'none';magnetometer'none';microphone'none';midi'none';payment'none';picture-in-picture'none';sync-xhr'none';usb'none';vr'none'"
+  X-Robots-Tag: 'noindex,none,noarchive,nosnippet,notranslate,noimageindex'
+  Referrer-Policy: 'strict-origin-when-cross-origin'
+  Cross-Origin-Opener-Policy: 'same-origin'
+  Cross-Origin-Resource-Policy: 'cross-origin'
+kind: ConfigMap
+metadata:
+  name: custom-headers
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ingress-nginx-controller
+data:
+  add-headers: 'network/custom-headers'
+  brotli-types: 'text/html text/css text/plain text/xml text/x-component text/javascript application/x-javascript application/javascript application/json application/manifest+json application/vnd.api+json application/xml application/xhtml+xml application/rss+xml application/xml+rss application/atom+xml application/vnd.ms-fontobject application/x-font-ttf application/x-font-opentype application/x-font-truetype image/svg+xml image/x-icon image/vnd.microsoft.icon font/ttf font/eot font/otf font/opentype application/x-web-app-manifest+json'
+  brotli-level: '6'
+  enable-brotli: 'true'
+  enable-modsecurity: 'false'
+  enable-ocsp: 'true'
+  # enable-opentelemetry: 'true'
+  enable-real-ip: 'false'
+  force-ssl-redirect: 'true'
+  global-rate-limit-memcached-host: dragonflydb-memcached.databases
+  geoip2-autoreload-in-minutes: '300'
+  hsts: 'true'
+  hsts-include-subdomains: 'true'
+  hsts-max-age: '63072000'
+  hsts-preload: 'true'
+  # otlp-collector-host: somefutureendpoint
+  ssl-chipers: 'EECDH+AESGCM:EDH+AESGCM'
+  ssl-dh-param: 'network/ingress-nginx-secrets'
+  ssl-protocols: 'TLSv1.3'
+  ssl-early-data: 'true'
+  ssl-ecdh-curve: 'secp384r1'
+  ssl-reject-handshake: 'true'
+  ssl-session-cache: 'true'
+  ssl-sesion-cache-size: '10m'
+  ssl-session-tickets: 'false'
+  use-http2: 'true'
+  use-forwarded-headers: 'true'
+  use-geoip2: 'false'
