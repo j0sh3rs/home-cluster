@@ -22,9 +22,6 @@ spec:
     remediation:
       strategy: rollback
       retries: 3
-  dependsOn:
-    - name: rook-ceph-cluster
-      namespace: rook-ceph
   values:
     controllers:
       home-assistant:
@@ -111,6 +108,7 @@ spec:
         type: persistentVolumeClaim
         size: 5Gi
         accessMode: ReadWriteOnce
+        storageClass: "openebs-hostpath"
         globalMounts:
           - path: /config
       logs:
