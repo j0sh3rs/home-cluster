@@ -108,7 +108,9 @@ spec:
                   port: code-server
     persistence:
       config:
-        type: hostPath
+        type: persistentVolumeClaim
+        size: 5Gi
+        accessMode: ReadWriteOnce
         globalMounts:
           - path: /config
       logs:
