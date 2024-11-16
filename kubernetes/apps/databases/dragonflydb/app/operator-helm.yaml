@@ -8,6 +8,7 @@ spec:
   chart:
     spec:
       chart: dragonflydb-operator
+      # renovate: datasource=docker depName=ghcr.io/dragonflydb/operator
       version: v1.25.1
       sourceRef:
         kind: HelmRepository
