@@ -8,6 +8,9 @@
   "features": {
     "./features": {}
   },
+  "mounts":[
+    "source=/Users/josh.simmonds/.ssh,target=/home/vscode/.ssh,type=bind,readonly=true"
+  ],
   "customizations": {
     "vscode": {
       "settings": {
@@ -19,7 +22,11 @@
         "terminal.integrated.defaultProfile.linux": "fish"
       },
       "extensions": [
-        "redhat.vscode-yaml"
+        "redhat.vscode-yaml",
+        "ms-azuretools.vscode-docker",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "ms-vscode-remote.remote-containers",
+        "signageos.signageos-vscode-sops"
       ]
     }
   }

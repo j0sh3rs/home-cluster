@@ -5,11 +5,12 @@ set -o noglob
 apk add --no-cache \
     age bash bind-tools ca-certificates curl direnv fish fzf \
     gettext git github-cli helm iputils jq k9s python3 py3-pip \
-    moreutils openssh-client openssl starship yq
+    moreutils openssh-client openssl starship yq pre-commit ripgrep \
+    nodejs npm
 
 apk add --no-cache \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
-        flux kubectl kustomize go-task sops pre-commit ripgrep
+        flux kubectl kustomize go-task sops
 
 apk add --no-cache \
     --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing \
@@ -23,6 +24,8 @@ do
     echo "=== Installing ${app} ==="
     curl -fsSL "https://i.jpillora.com/${app}" | bash
 done
+
+# npm install
 
 # Create the fish configuration directory
 mkdir -p /home/vscode/.config/fish/{completions,conf.d}
