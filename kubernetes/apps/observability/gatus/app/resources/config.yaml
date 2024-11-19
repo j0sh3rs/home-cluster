@@ -11,11 +11,9 @@ ui:
   title: Status | Gatus
   header: Status
 alerting:
-  pushover:
-    title: Gatus
-    application-token: ${PUSHOVER_TOKEN}
-    user-key: ${PUSHOVER_USER_KEY}
-    priority: 1
+  discord:
+    title: ":robot: Gatus"
+    webhook-url: ${DISCORD_URL}
     default-alert:
       description: health-check failed
       send-on-resolved: true
@@ -25,14 +23,12 @@ connectivity:
   checker:
     target: 1.1.1.1:53
     interval: 1m
-# endpoints:
-#   - name: flux-webhook
-#     group: external
-#     url: https://flux-webhook.bth.wtf
-#     interval: 1m
-#     client:
-#       dns-resolver: tcp://1.1.1.1:53
-#     conditions:
-#       - "[STATUS] == 404"
-#     alerts:
-#       - type: pushover
+endpoints:
+  - name: self
+    group: internal
+    url: https://status.bth.wtf
+    interval: 1m
+    conditions:
+      - "[STATUS] == 404"
+    alerts:
+      - type: discord
