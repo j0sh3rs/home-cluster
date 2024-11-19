@@ -23,12 +23,12 @@ connectivity:
   checker:
     target: 1.1.1.1:53
     interval: 1m
-endpoints:
-  - name: self
-    group: internal
-    url: https://status.bth.wtf
-    interval: 1m
-    conditions:
-      - "[STATUS] == 404"
-    alerts:
-      - type: discord
+# endpoints:
+#   - name: self
+#     group: internal
+#     url: https://status.bth.wtf
+#     interval: 1m
+#     conditions:
+#       - "[STATUS] == 404"
+#     alerts:
+#       - type: discord
