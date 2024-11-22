@@ -16,9 +16,6 @@
     'prIgnoreNotification',
   ],
   rebaseWhen: 'conflicted',
-  schedule: [
-    'every hour',
-  ],
   ignorePaths: [
     '**/*.sops.*',
   ],
