@@ -10,13 +10,14 @@
   ],
   dependencyDashboard: true,
   dependencyDashboardTitle: 'Renovate Dashboard 🤖',
+  timezone: "America/New_York",
   suppressNotifications: [
     'prEditedNotification',
     'prIgnoreNotification',
   ],
   rebaseWhen: 'conflicted',
   schedule: [
-    'every weekend',
+    'every hour',
   ],
   ignorePaths: [
     '**/*.sops.*',
