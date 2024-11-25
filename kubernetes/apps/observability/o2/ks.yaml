@@ -35,7 +35,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   dependsOn:
-    - name: o2
+    - name: openobserve
   path: ./kubernetes/apps/observability/o2/collector
   prune: true
   sourceRef:
