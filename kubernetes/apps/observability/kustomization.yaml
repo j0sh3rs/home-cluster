@@ -7,4 +7,5 @@ resources:
   - ./kube-prometheus-stack/ks.yaml
   - ./gatus/ks.yaml
   - ./grafana/ks.yaml
+  - ./o2/ks.yaml
   - ./unpoller/ks.yaml
