@@ -15,6 +15,7 @@ resources:
   - ./kyverno.yaml
   - ./metrics-server.yaml
   - ./openebs.yaml
+  - ./openobserve.yaml
   - ./piraeus.yaml
   - ./postfinance.yaml
   - ./prometheus-community.yaml
