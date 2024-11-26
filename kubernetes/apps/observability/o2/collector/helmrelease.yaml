@@ -28,6 +28,6 @@ spec:
   values:
     exporters:
       otlphttp/openobserve:
-        endpoint: http://o2-openobserve-router.observability.svc.cluster.local:5080/api/default
+        endpoint: http://openobserve.observability.svc.cluster.local:5080/api/default
       otlphttp/openobserve_k8s_events:
-        endpoint: http://o2-openobserve-router.observability.svc.cluster.local:5080/api/default
+        endpoint: http://openobserve.observability.svc.cluster.local:5080/api/default
