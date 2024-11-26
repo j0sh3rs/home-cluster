@@ -20,14 +20,14 @@ spec:
     - kind: Secret
       name: openobserve-secrets
       valuesKey: OTLP_AUTH
-      targetPath: "otlphttp/openobserve.headers.Authorization"
+      targetPath: "exporters.otlphttp/openobserve.headers.Authorization"
     - kind: Secret
       name: openobserve-secrets
       valuesKey: OTLP_AUTH
-      targetPath: "otlphttp/openobserve_k8s_events.headers.Authorization"
+      targetPath: "exporters.otlphttp/openobserve_k8s_events.headers.Authorization"
   values:
     exporters:
       otlphttp/openobserve:
-        endpoint: https://o2.bth.wtf/api/default
+        endpoint: http://o2-openobserve-router.openobserve.svc.cluster.local:5080/api/default
       otlphttp/openobserve_k8s_events:
-        endpoint: https://o2.bth.wtf/api/default
+        endpoint: http://o2-openobserve-router.openobserve.svc.cluster.local:5080/api/default
