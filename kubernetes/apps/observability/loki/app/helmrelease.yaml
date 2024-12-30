@@ -24,17 +24,10 @@ spec:
     remediation:
       strategy: rollback
       retries: 3
-  valuesFrom:
-    - kind: Secret
-      name: loki-secrets
-      valuesKey: S3_ACCESS_KEY
-      targetPath: loki.storage.s3.accessKeyId
-    - kind: Secret
-      name: loki-secrets
-      valuesKey: S3_SECRET_ACCESS_KEY
-      targetPath: loki.storage.s3.secretAccessKey
+
   values:
     deploymentMode: SingleBinary
+
     loki:
       analytics:
         reporting_enabled: false
@@ -60,14 +53,9 @@ spec:
               period: 24h
       server:
         log_level: info
-      stroage:
+      storage:
         type: filesystem
-      # storage:
-      #   type: s3
-      #   s3:
-      #     endpoint: s3.68cc.io
-      #     region: us-east-1
-      #     signatureVersion: v4
+
     backend:
       replicas: 0
     chunksCache:
