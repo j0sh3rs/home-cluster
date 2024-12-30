@@ -60,13 +60,14 @@ spec:
               period: 24h
       server:
         log_level: info
-      storage:
-        type: s3
-        s3:
-          endpoint: s3.68cc.io
-          region: us-east-1
-          signatureVersion: v4
-          bucketnames: loki
+      stroage:
+        type: filesystem
+      # storage:
+      #   type: s3
+      #   s3:
+      #     endpoint: s3.68cc.io
+      #     region: us-east-1
+      #     signatureVersion: v4
     backend:
       replicas: 0
     chunksCache:
