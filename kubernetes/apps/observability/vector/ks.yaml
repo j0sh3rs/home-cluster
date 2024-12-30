@@ -1,0 +1,38 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: vector-aggregator
+  namespace: flux-system
+spec:
+  targetNamespace: observability
+  dependsOn:
+    - name: cluster-apps-loki
+  path: ./kubernetes/apps/observability/vector/aggregator
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: home-kubernetes
+  interval: 30m
+  retryInterval: 1m
+  timeout: 15m
+  wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: vector-agent
+  namespace: flux-system
+spec:
+  targetNamespace: observability
+  dependsOn:
+    - name: vector-aggregator
+  path: ./kubernetes/apps/observability/vector/agent
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: home-kubernetes
+  interval: 30m
+  retryInterval: 1m
+  timeout: 15m
+  wait: true
