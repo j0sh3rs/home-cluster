@@ -74,7 +74,7 @@ sinks:
     out_of_order_action: rewrite_timestamp
     labels:
       hostname: "{{ host }}"
-      syslog_identifier: "{{ SYSLOG_IDENTIFIER }}"
+      syslog_identifier: "unifi"
 
   loki_journal:
     type: loki
