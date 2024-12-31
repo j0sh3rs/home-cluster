@@ -24,10 +24,8 @@ spec:
     remediation:
       strategy: rollback
       retries: 3
-
   values:
     deploymentMode: SingleBinary
-
     loki:
       analytics:
         reporting_enabled: false
