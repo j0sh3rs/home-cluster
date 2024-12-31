@@ -65,7 +65,7 @@ sinks:
   loki_unifi:
     type: loki
     inputs:
-      - unifi_logs
+      - udm_logs
     endpoint: http://loki-headless.observability.svc.cluster.local:3100
     encoding:
       codec: json
