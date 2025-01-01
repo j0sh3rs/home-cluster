@@ -1,0 +1,43 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vector-aggregator-gatus
+  labels:
+    gatus.io/enabled: "true"
+data:
+  config.yaml: |
+    endpoints:
+      - name: vector-aggregator-udm
+        group: infrastructure
+        url: tcp://vector-aggregator.observability.svc.cluster.local:6001
+        interval: 1m
+        ui:
+          hide-url: true
+          hide-hostname: true
+        conditions:
+          - "[CONNECTED] == true"
+        alerts:
+          - type: discord
+      - name: vector-aggregator-k8s
+        group: infrastructure
+        url: tcp://vector-aggregator.observability.svc.cluster.local:6002
+        interval: 1m
+        ui:
+          hide-url: true
+          hide-hostname: true
+        conditions:
+          - "[CONNECTED] == true"
+        alerts:
+          - type: discord
+      - name: vector-aggregator-journald
+        group: infrastructure
+        url: tcp://vector-aggregator.observability.svc.cluster.local:6002
+        interval: 1m
+        ui:
+          hide-url: true
+          hide-hostname: true
+        conditions:
+          - "[CONNECTED] == true"
+        alerts:
+          - type: discord
