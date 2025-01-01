@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: postgres-gatus-ep
+  name: dragonfly-gatus
   labels:
     gatus.io/enabled: "true"
 data:
