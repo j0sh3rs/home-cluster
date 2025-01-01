@@ -21,7 +21,7 @@ data:
           - type: discord
       - name: dragonflydb-redis
         group: infrastructure
-        url: tcp://dragonflydb-memcached.databases.svc.cluster.local:6379
+        url: tcp://dragonflydb.databases.svc.cluster.local:6379
         interval: 1m
         ui:
           hide-url: true
