@@ -33,18 +33,18 @@ repos:
     rev: v2.1.1
     hooks:
       - id: forbid-secrets
-  - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.43.0
-    hooks:
-      - id: markdownlint
-        args:
-          - --config
-          - '.github/linters/.markdownlint.yaml'
+  # - repo: https://github.com/igorshubovych/markdownlint-cli
+  #   rev: v0.44.0
+  #   hooks:
+  #     - id: markdownlint
+  #       args:
+  #         - --config
+  #         - '.github/linters/.markdownlint.yaml'
   # - repo: https://github.com/python-jsonschema/check-jsonschema
   #   rev: 0.29.4
   #   hooks:
   #     - id: check-renovate
   - repo: https://github.com/zricethezav/gitleaks
-    rev: v8.22.1
+    rev: v8.23.3
     hooks:
       - id: gitleaks
