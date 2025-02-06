@@ -25,3 +25,4 @@ resources:
   - ./ingress-nginx.yaml
   - ./k8s-gateway.yaml
   - ./vector.yaml
+  - ./tailscale.yaml
