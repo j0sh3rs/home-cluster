@@ -18,6 +18,7 @@
   rebaseWhen: 'auto',
   ignorePaths: [
     '**/*.sops.*',
+    'archive/**.*',
   ],
   flux: {
     fileMatch: [
