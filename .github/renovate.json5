@@ -227,6 +227,8 @@
       ],
       semanticCommitType: 'fix',
       semanticCommitScope: 'github-release',
+      automerge: true,
+      automergeType: 'branch',
     },
     {
       matchManagers: [
@@ -246,6 +248,8 @@
       ],
       semanticCommitType: 'feat',
       semanticCommitScope: 'github-action',
+      automerge: true,
+      automergeType: 'branch',
     },
     {
       matchManagers: [
@@ -256,6 +260,8 @@
       ],
       semanticCommitType: 'fix',
       semanticCommitScope: 'github-action',
+      automerge: true,
+      automergeType: 'branch',
     },
     {
       matchUpdateTypes: [
