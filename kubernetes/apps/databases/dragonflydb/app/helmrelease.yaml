@@ -7,7 +7,7 @@ spec:
   interval: 30m
   chart:
     spec:
-      # renovate: datasource=docker depName=ghcr.io/dragonflydb/dragonfly
+      # renovate: datasource=github-releases depName=dragonflydb/dragonfly
       chart: dragonflydb
       version: v1.25.1
       sourceRef:
