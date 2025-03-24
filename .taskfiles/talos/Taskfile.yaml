@@ -25,8 +25,8 @@ tasks:
   apply-node:
     desc: Apply Talos config to a node [HOSTNAME=required]
     cmds:
-      - talosctl --nodes {{.HOSTNAME}} apply-config --mode={{.MODE}} --file {{.TALHELPER_CLUSTER_DIR}}/{{.CLUSTER_NAME}}-{{.HOSTNAME}}.yaml
-      - talosctl --nodes {{.HOSTNAME}} health --wait-timeout=10m --server=false
+      - talosctl --nodes {{.HOSTNAME}} apply-config --mode={{.MODE}} --file {{.TALHELPER_CLUSTER_DIR}}/{{.CLUSTER_NAME}}-{{.HOSTNAME}}.yaml -e 192.168.35.2
+      - talosctl --nodes {{.HOSTNAME}} health --wait-timeout=10m --server=false -e 192.168.35.2
     vars:
       CLUSTER_NAME:
         sh: yq '.clusterName' {{.TALHELPER_CONFIG_FILE}}
@@ -34,8 +34,8 @@ tasks:
     requires:
       vars: [HOSTNAME]
     preconditions:
-      - talosctl --nodes {{.HOSTNAME}} get machineconfig &>/dev/null
-      - talosctl config info &>/dev/null
+      - talosctl --nodes {{.HOSTNAME}} get machineconfig -e 192.168.35.2 &>/dev/null
+      - talosctl config info -e 192.168.35.2 &>/dev/null
       - test -f {{.TALHELPER_CLUSTER_DIR}}/{{.CLUSTER_NAME}}-{{.HOSTNAME}}.yaml
       - test -f {{.TALOSCONFIG}}
       - which talosctl yq
@@ -44,8 +44,8 @@ tasks:
     desc: Upgrade Talos on a single node [HOSTNAME=required]
     cmds:
       - task: down
-      - talosctl --nodes {{.HOSTNAME}} upgrade --image="factory.talos.dev/installer/{{.TALOS_SCHEMATIC_ID}}:{{.TALOS_VERSION}}" --timeout=10m
-      - talosctl --nodes {{.HOSTNAME}} health --wait-timeout=10m --server=false
+      - talosctl --nodes {{.HOSTNAME}} upgrade --image="factory.talos.dev/installer/{{.TALOS_SCHEMATIC_ID}}:{{.TALOS_VERSION}}" --timeout=10m -e 192.168.35.2
+      - talosctl --nodes {{.HOSTNAME}} health --wait-timeout=10m --server=false -e 192.168.35.2
       - task: up
     vars:
       TALOS_SCHEMATIC_ID:
@@ -56,23 +56,23 @@ tasks:
       vars: [HOSTNAME]
     preconditions:
       - curl -fsSL -o /dev/null --fail https://github.com/siderolabs/talos/releases/tag/{{.TALOS_VERSION}}
-      - talosctl --nodes {{.HOSTNAME}} get machineconfig &>/dev/null
-      - talosctl config info &>/dev/null
+      - talosctl --nodes {{.HOSTNAME}} get machineconfig -e 192.168.35.2 &>/dev/null
+      - talosctl config info -e 192.168.35.2 &>/dev/null
       - test -f {{.TALOSCONFIG}}
       - which kubectl talosctl yq
 
   upgrade-k8s:
     desc: Upgrade Kubernetes
-    cmd: talosctl --nodes {{.KUBERNETES_CONTROLLER}} upgrade-k8s --to {{.KUBERNETES_VERSION}}
+    cmd: talosctl --nodes {{.KUBERNETES_CONTROLLER}} upgrade-k8s --to {{.KUBERNETES_VERSION}} -e 192.168.35.2
     vars:
       KUBERNETES_CONTROLLER:
-        sh: talosctl config info --output json | jq --raw-output '.endpoints[]' | shuf -n 1
+        sh: talosctl config info --output json -e 192.168.35.2 | jq --raw-output '.endpoints[]' | shuf -n 1
       KUBERNETES_VERSION:
         sh: yq '.kubernetesVersion' {{.TALHELPER_CONFIG_FILE}}
     preconditions:
       - curl -fsSL -o /dev/null --fail https://github.com/siderolabs/kubelet/releases/tag/{{.KUBERNETES_VERSION}}
-      - talosctl --nodes {{.KUBERNETES_CONTROLLER}} get machineconfig &>/dev/null
-      - talosctl config info &>/dev/null
+      - talosctl --nodes {{.KUBERNETES_CONTROLLER}} get machineconfig -e 192.168.35.2 &>/dev/null
+      - talosctl config info -e 192.168.35.2 &>/dev/null
       - test -f {{.TALOSCONFIG}}
       - which talosctl yq
 
