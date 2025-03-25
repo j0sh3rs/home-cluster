@@ -6,7 +6,7 @@ metadata:
   name: talos
 spec:
   # renovate: datasource=docker depName=ghcr.io/siderolabs/installer
-  version: v1.9.5
+  version: &talos_version v1.9.5
   concurrency: 1
   postCompleteDelay: 2m
   exclusive: true
@@ -15,11 +15,19 @@ spec:
     - name: system-upgrade-controller
       path: /var/run/secrets/talos.dev
       ignoreUpdates: true
+  env:
+    - name: SYSTEM_UPGRADE_PLAN_LATEST_VERSION
+      value: *talos_version
+    - name: SYSTEM_UPGRADE_NODE_NAME
+      valueFrom:
+        fieldRef:
+          fieldPath: spec.nodeName
   nodeSelector:
     matchExpressions:
       - key: kubernetes.io/hostname
         operator: Exists
   upgrade:
+    # renovate: datasource=docker depName=ghcr.io/jfroy/tnu
     image: ghcr.io/jfroy/tnu:0.4.1
     args:
       - --node=${SYSTEM_UPGRADE_NODE_NAME}

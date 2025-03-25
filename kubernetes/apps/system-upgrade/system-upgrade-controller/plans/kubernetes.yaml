@@ -6,7 +6,7 @@ metadata:
   name: kubernetes
 spec:
   # renovate: datasource=docker depName=ghcr.io/siderolabs/kubelet
-  version: v1.32.3
+  version: &kube_version v1.32.3
   concurrency: 1
   exclusive: true
   serviceAccountName: system-upgrade-controller
@@ -14,12 +14,20 @@ spec:
     - name: system-upgrade-controller
       path: /var/run/secrets/talos.dev
       ignoreUpdates: true
+  env:
+    - name: SYSTEM_UPGRADE_PLAN_LATEST_VERSION
+      value: *kube_version
+    - name: SYSTEM_UPGRADE_NODE_NAME
+      valueFrom:
+        fieldRef:
+          fieldPath: spec.nodeName
   nodeSelector:
     matchExpressions:
       - key: node-role.kubernetes.io/control-plane
         operator: Exists
   upgrade:
-    image: ghcr.io/siderolabs/talosctl:${TALOS_VERSION}
+    # renovate: datasource=docker depName=ghcr.io/siderolabs/installer
+    image: ghcr.io/siderolabs/talosctl:v1.9.5
     args:
       - --nodes=${SYSTEM_UPGRADE_NODE_NAME}
       - upgrade-k8s
