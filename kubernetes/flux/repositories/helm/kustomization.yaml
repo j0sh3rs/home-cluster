@@ -10,6 +10,7 @@ resources:
   - ./coredns.yaml
   - ./descheduler.yaml
   - ./dragonflydb.yaml
+  - ./emberstack.yaml
   - ./grafana.yaml
   - ./jetstack.yaml
   - ./kyverno.yaml
