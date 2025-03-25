@@ -22,3 +22,7 @@ spec:
       retries: 3
   values:
     fullnameOverride: reflector
+    image:
+      pullPolicy: Always
+      repository: emberstack/kubernetes-reflector
+      tag: 9.0.322
