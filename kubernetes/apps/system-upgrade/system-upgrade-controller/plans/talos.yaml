@@ -22,6 +22,6 @@ spec:
   upgrade:
     image: ghcr.io/jfroy/tnu:0.4.1
     args:
-      - --node=$(SYSTEM_UPGRADE_NODE_NAME)
-      - --tag=$(SYSTEM_UPGRADE_PLAN_LATEST_VERSION)
+      - --node=${SYSTEM_UPGRADE_NODE_NAME}
+      - --tag=${SYSTEM_UPGRADE_PLAN_LATEST_VERSION}
       - --powercycle
