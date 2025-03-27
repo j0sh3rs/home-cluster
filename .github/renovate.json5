@@ -24,14 +24,15 @@
   ignorePaths: [
     "**/*.sops.*",
     "**/resources/**",
+    "**/archive/**",
   ],
   flux: {
-    fileMatch: ["(^|/)kubernetes/(?!archive/).+\\.ya?ml$"]
+    fileMatch: ["(^|/)kubernetes/.+\\.ya?ml$"]
   },
   "helm-values": {
-    fileMatch: ["(^|/)kubernetes/(?!archive/).+\\.ya?ml$"]
+    fileMatch: ["(^|/)kubernetes/.+\\.ya?ml$"]
   },
   kubernetes: {
-    fileMatch: ["(^|/)kubernetes/(?!archive/).+\\.ya?ml$"]
+    fileMatch: ["(^|/)kubernetes/.+\\.ya?ml$"]
   },
 }
