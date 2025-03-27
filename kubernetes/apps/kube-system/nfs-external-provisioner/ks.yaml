@@ -5,7 +5,7 @@ metadata:
   name: &app nfs-external-provisioner
   namespace: flux-system
 spec:
-  targetNamespace: nfs-external-provisioner
+  targetNamespace: kube-system
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
