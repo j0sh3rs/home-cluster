@@ -8,6 +8,7 @@ resources:
   - ./coredns/ks.yaml
   - ./descheduler/ks.yaml
   - ./metrics-server/ks.yaml
+  - ./nfs-external-provisioner/ks.yaml
   - ./reflector/ks.yaml
   - ./reloader/ks.yaml
   - ./kubelet-csr-approver/ks.yaml
