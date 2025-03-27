@@ -4,6 +4,6 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./atuin/ks.yaml
-  - ./ebook2audio/ks.yaml
+  # - ./ebook2audio/ks.yaml
   - ./it-tools/ks.yaml
   - ./linkwarden/ks.yaml
