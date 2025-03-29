@@ -32,7 +32,7 @@ spec:
           app:
             image:
               repository: docker.io/athomasson2/ebook2audiobook
-              tag: rocm@sha256:fa8235d6703ab6b64a3f8282c12e13d7e4478f43f9702aa16f89ed4f47827851
+              tag: rocm@sha256:e144eec0368eee004b1de396af0ecd00a7bac4b57557c86e40fb110fb9458d81
             command: ["python", "app.py", "--script_mode", "full_docker"]
             securityContext:
               allowPrivilegeEscalation: false
