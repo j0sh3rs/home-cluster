@@ -1,0 +1,10 @@
+---
+originRequest:
+  originServerName: external.bth.wtf
+
+ingress:
+  - hostname: bth.wtf
+    service: &svc https://cilium-gateway-external.kube-system.svc.cluster.local
+  - hostname: "*.bth.wtf"
+    service: *svc
+  - service: http_status:404
