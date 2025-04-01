@@ -4,8 +4,8 @@ bandwidthManager:
   enabled: true
   bbr: true
 bpf:
-  datapathMode: netkit
-  masquerade: true
+  # datapathMode: netkit
+  masquerade: false
   preallocateMaps: true
 bpfClockProbe: true
 cgroup:
