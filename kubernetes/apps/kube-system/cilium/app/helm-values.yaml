@@ -1,7 +1,12 @@
 ---
 autoDirectNodeRoutes: true
+bandwidthManager:
+  enabled: true
+  bbr: true
 bpf:
   masquerade: false # Required for Talos `.machine.features.hostDNS.forwardKubeDNSToHost`
+  preallocateMaps: true
+bpfClockProbe: true
 cgroup:
   automount:
     enabled: false
@@ -13,10 +18,17 @@ cni:
   exclusive: false
 # NOTE: devices might need to be set if you have more than one active NIC on your hosts
 # devices: eno+ eth+
+dashboards:
+  enabled: true
+enableIPv4BIGTCP: true
 endpointRoutes:
   enabled: true
 envoy:
-  enabled: false
+  rollOutPods: true
+gatewayAPI:
+  enabled: true
+  enableAlpn: true
+  xffNumTrustedHops: 1
 hubble:
   enabled: false
 ipam:
@@ -33,8 +45,19 @@ loadBalancer:
   mode: "dsr"
 localRedirectPolicy: true
 operator:
-  replicas: 1
+  dashboards:
+    enabled: true
+  prometheus:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+  replicas: 2
   rollOutPods: true
+prometheus:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    trustCRDsExist: true
 rollOutCiliumPods: true
 routingMode: native
 securityContext:
@@ -47,6 +70,8 @@ securityContext:
       - IPC_LOCK
       - SYS_ADMIN
       - SYS_RESOURCE
+      - PERFMON
+      - BPF
       - DAC_OVERRIDE
       - FOWNER
       - SETGID
