@@ -5,7 +5,7 @@ resources:
   - ./namespace.yaml
   - ./prometheus-operator-crds/ks.yaml
   - ./kube-prometheus-stack/ks.yaml
-  - ./gatus/ks.yaml
+  # - ./gatus/ks.yaml
   - ./grafana/ks.yaml
   # - ./loki/ks.yaml
   # - ./o2/ks.yaml
