@@ -70,7 +70,7 @@ spec:
     sources: ["gateway-httproute", "service"]
     txtOwnerId: main
     txtPrefix: k8s.main.
-    domainFilters: ["68cc.io"]
+    domainFilters: ["bth.wtf"]
     serviceMonitor:
       enabled: true
     podAnnotations:
