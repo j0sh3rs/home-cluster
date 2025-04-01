@@ -4,7 +4,8 @@ bandwidthManager:
   enabled: true
   bbr: true
 bpf:
-  masquerade: false # Required for Talos `.machine.features.hostDNS.forwardKubeDNSToHost`
+  datapathMode: netkit
+  masquerade: true
   preallocateMaps: true
 bpfClockProbe: true
 cgroup:
@@ -16,10 +17,9 @@ cluster:
   name: "home-k8s"
 cni:
   exclusive: false
-# NOTE: devices might need to be set if you have more than one active NIC on your hosts
-# devices: eno+ eth+
 dashboards:
   enabled: true
+devices: enp+
 enableIPv4BIGTCP: true
 endpointRoutes:
   enabled: true
